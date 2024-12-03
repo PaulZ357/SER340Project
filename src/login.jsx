@@ -21,10 +21,12 @@ function App() {
 
   return (
     <div className="app-container">
+      <div className="header">
+        <h1>Course Feedback Logger</h1>
+      </div>
       {!isLoggedIn ? (
         <div className="form-container">
           <h2>Sign Up</h2>
-          <label>Email</label>
           <input
             type="email"
             placeholder="Enter your school email"
