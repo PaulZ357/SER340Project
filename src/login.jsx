@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css"; 
+import "./login.css"; 
 
 function App() {
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ function App() {
       ) : (
         <div className="welcome-container">
           <h2>You are now logged in!</h2>
-          <p>Welcome to the system.</p>
+          <p>Welcome</p>
         </div>
       )}
     </div>
