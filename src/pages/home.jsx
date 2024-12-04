@@ -1,7 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./home.css";
 
 function Home() {
+  const location = useLocation();
+  const { role, email } = location.state || { role: "Unknown", email: "Unknown" };
+
   return (
     <div className="app-container">
       <div className="left-sidebar">
@@ -12,7 +16,8 @@ function Home() {
         </nav>
       </div>
       <div className="content">
-        <p>Welcome to the course</p>
+        <p>Welcome to the course, <strong>{role}</strong>!</p>
+        <p>Your email: {email}</p>
       </div>
     </div>
   );
