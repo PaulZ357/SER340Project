@@ -5,11 +5,10 @@ import "./home.css";
 function Home() {
     const location = useLocation();
     const { role, firstName, lastName } = location.state || {
-        role: "Unknown",
-        firstName: " ",
-        lastName: " ",
-        role,
-      };
+      role: "Unknown",
+      firstName: " ",
+      lastName: " ",
+    };
   
     return (
       <div className="app-container">
@@ -25,38 +24,33 @@ function Home() {
                 <a className="btn btn-secondary">Add Assignment</a>
               </>
             ) : (
-             <Link 
-             to="/givefeedback"
-             className="btn btn-secondary"
-             >
-                GiveFeedback
-             </Link>
-              
+              <Link to="/givefeedback" className="btn btn-secondary">
+                Give Feedback
+              </Link>
             )}
-
-             {/* Profile Button */}
-             <Link
-                 to="/profile"
-                 state={{
+  
+            {/* Profile Button */}
+            <Link
+              to="/profile"
+              state={{
                 firstName,
                 lastName,
                 role,
-                }}
-                className="btn btn-secondary"
-                >
-            Profile
+              }}
+              className="btn btn-secondary"
+            >
+              Profile
             </Link>
   
-            {/* Log Out Button - Last for both roles */}
-           
-            <a className="btn btn-secondary">Log Out</a>
+            {/* Log Out Button */}
+            <Link to="/" className="btn btn-secondary">
+              Log Out
+            </Link>
           </nav>
-        </div>
-        <div className="content">
-          <p>Welcome to the course, <strong>{role}</strong>!</p>
         </div>
       </div>
     );
   }
+  
   
   export default Home;

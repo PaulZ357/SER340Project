@@ -36,12 +36,3 @@ body {
   background-color: #282c34;
 }
 
-.content {
-  margin-left: 15%; /* Same as sidebar width */
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #ecf0f1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
