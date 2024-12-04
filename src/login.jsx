@@ -34,7 +34,7 @@ function Login({ setIsLoggedIn }) {
 
   const handleRoleSelection = (role) => {
     setIsLoggedIn(true);
-    navigate("/home", { state: { role, email, firstName, lastName } });
+    navigate("/selectcourse", { state: { role, email, firstName, lastName } });
   };
 
   return (
