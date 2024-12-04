@@ -1,0 +1,29 @@
+.rating-form {
+    width: fit-content;
+    margin: auto;
+}
+
+.rating {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover~label {
+    color: darkgoldenrod;
+}
+
+.rating input:checked~label {
+    color: goldenrod;
+}
