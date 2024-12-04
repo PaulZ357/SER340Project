@@ -7,15 +7,24 @@ function Login({ setIsLoggedIn }) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const validDomains = ["@school.edu","@quinnipiac.edu"];
   const [showRoleSelection, setShowRoleSelection] = useState(false);
   const navigate = useNavigate();
 
+  const checkValidDomain = (email) => {
+    for (var i = 0; i<validDomains.length; i++) {
+      if (email.endsWith(validDomains[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
   const handleSignUp = () => {
     if (!firstName.trim() || !lastName.trim()) {
       setError("Please enter both your first and last name.");
       return;
     }
-    if (!email.endsWith("@quinnipiac.edu")) {
+    if (!checkValidDomain(email)) {
       setError("Please use a valid school email (e.g., example@school.edu).");
       return;
     }
