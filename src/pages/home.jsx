@@ -4,10 +4,14 @@ import "./home.css";
 
 function Home() {
     const location = useLocation();
-    const { role, firstName, lastName } = location.state || {
+    const { role, firstName, lastName, email, courseID, courseName, professor } = location.state || {
       role: "Unknown",
       firstName: " ",
       lastName: " ",
+      email: " ",
+      courseID: " ",
+      courseName: " ",
+      professor: " ",
     };
   
     return (
@@ -47,6 +51,9 @@ function Home() {
               Log Out
             </Link>
           </nav>
+        </div>
+        <div>
+          <p>Hello and welcome to {courseID} {courseName}</p>
         </div>
       </div>
     );
