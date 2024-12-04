@@ -15,7 +15,7 @@ function Login({ setIsLoggedIn }) {
       setError("Please enter both your first and last name.");
       return;
     }
-    if (!email.endsWith("@school.edu")) {
+    if (!email.endsWith("@quinnipiac.edu")) {
       setError("Please use a valid school email (e.g., example@school.edu).");
       return;
     }
