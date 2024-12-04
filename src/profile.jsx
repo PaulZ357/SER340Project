@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useLocation } from "react-router-dom";
 import "./profile.css";
 
@@ -9,6 +9,31 @@ function Profile() {
       lastName: " ",
       role: "Unknown",
     };
+  
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+  
+    const validatePassword = (password) => {
+      const passwordRegex = /^(?=.*[!@#$%^&*])(?=.*\d).{8,}$/;
+      if (!passwordRegex.test(password)) {
+        return "Password must be at least 8 characters long, include a number, and a special character.";
+      }
+      return "";
+    };
+  
+    const handlePasswordChange = (e) => {
+      const newPassword = e.target.value;
+      setPassword(newPassword);
+      const error = validatePassword(newPassword);
+      setPasswordError(error);
+    };
+  
+    const handleConfirmPasswordChange = (e) => {
+      setConfirmPassword(e.target.value);
+    };
+  
+    const isPasswordValid = password && !passwordError && password === confirmPassword;
   
     return (
       <div className="profile-container">
@@ -72,6 +97,44 @@ function Profile() {
         ) : (
           <p>No specific role information available.</p>
         )}
+  
+        {/* Password Creation Section */}
+        <div className="profile-section">
+          <label htmlFor="password">Create Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter a strong password"
+            className="profile-input"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          {passwordError && <p className="error-text">{passwordError}</p>}
+        </div>
+        <div className="profile-section">
+          <label htmlFor="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            placeholder="Re-enter your password"
+            className="profile-input"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+          />
+          {password && confirmPassword && password !== confirmPassword && (
+            <p className="error-text">Passwords do not match.</p>
+          )}
+        </div>
+  
+        <button
+          className="save-button"
+          disabled={!isPasswordValid}
+          onClick={() => alert("Password set successfully!")}
+        >
+          Save
+        </button>
       </div>
     );
   }
