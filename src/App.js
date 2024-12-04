@@ -19,6 +19,9 @@ function App() {
           {/* Login Route */}
           <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           
+          {/* SelectCourse Route */}
+          <Route path="/selectcourse" element={<SelectCourse />} />
+
           {/* Home Route */}
           <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
 
