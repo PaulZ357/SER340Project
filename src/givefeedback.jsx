@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import App from '../login';
+import App from './login';
 import "./givefeedback.css"
 
 function Feedback() {

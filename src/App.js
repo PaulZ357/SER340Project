@@ -1,21 +1,35 @@
+
 import Home from "./pages/home.jsx"
+import React, { useState } from "react";
 import SelectCourse from './pages/selectcourse.jsx'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from './login.jsx'
 import Table from "./table.jsx"
+import Profile from "./profile.jsx";
+import Givefeedback from "./givefeedback.jsx"
 import './App.css';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    /*<div className="App">
-      <SelectCourse/>
-    </div>*/
     <div className="container">
-      <BrowserRouter>
+    <Router>
         <Routes>
-          <Route index element={<Table />}></Route>
+          {/* Login Route */}
+          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          
+          {/* Home Route */}
+          <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
+
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="/givefeedback" element={<Givefeedback/>} />
+
+          {/* Table Route */}
+          <Route path="/table" element={<Table />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

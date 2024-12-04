@@ -1,22 +1,31 @@
 import React, { useState } from "react";
-import "./login.css"; 
+import { useNavigate } from "react-router-dom";
+import "./login.css";
 
-function App() {
+function Login({ setIsLoggedIn }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showRoleSelection, setShowRoleSelection] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
+    if (!firstName.trim() || !lastName.trim()) {
+      setError("Please enter both your first and last name.");
+      return;
+    }
     if (!email.endsWith("@school.edu")) {
       setError("Please use a valid school email (e.g., example@school.edu).");
       return;
     }
-
-    // Automatically log in the user after entering a valid email
-    setIsLoggedIn(true);
-    //alert(`Welcome, ${email}!`);
-    setEmail("");
     setError("");
+    setShowRoleSelection(true);
+  };
+
+  const handleRoleSelection = (role) => {
+    setIsLoggedIn(true);
+    navigate("/home", { state: { role, email, firstName, lastName } });
   };
 
   return (
@@ -24,9 +33,21 @@ function App() {
       <div className="header">
         <h1>Course Feedback Logger</h1>
       </div>
-      {!isLoggedIn ? (
+      {!showRoleSelection ? (
         <div className="form-container">
           <h2>Sign Up</h2>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
           <input
             type="email"
             placeholder="Enter your school email"
@@ -37,13 +58,14 @@ function App() {
           <button onClick={handleSignUp}>Sign Up</button>
         </div>
       ) : (
-        <div className="welcome-container">
-          <h2>You are now logged in!</h2>
-          <p>Welcome</p>
+        <div className="form-container">
+          <h2>Select Your Role</h2>
+          <button onClick={() => handleRoleSelection("Professor")}>Professor?</button>
+          <button onClick={() => handleRoleSelection("Student")}>Student?</button>
         </div>
       )}
     </div>
   );
 }
 
-export default App;
+export default Login;
