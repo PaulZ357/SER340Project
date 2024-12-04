@@ -13,21 +13,24 @@ function SeeFeedback() {
     return (
         <div class="feedback-form">
             {questions.filter((question) => { return question.type == "rating" }).map((question) => (
-                <form id={"rating" + question.id} class="rating-form"><h2>{question.name}</h2>
+                <div class="rating-form"><h2>{question.name}</h2>
                     <div class="rating">
-                        <p>&#9733;</p>
-                        <p>&#9733;</p>
-                        <p>&#9733;</p>
-                        <p>&#9733;</p>
-                        <p>&#9733;</p>
-                    </div>
-                </form>))}
-            {questions.filter((question) => { return question.type == "open" }).map((question) => (
-                <div class="comment">
-                    <p>{question.response}</p>
-                </div>))}
-            <button type="submit" class="submit-btn">Submit</button>
-        </div>
+                        <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
+                        <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
+                        <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
+                        <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
+                    <p class="checked">&#9733;</p>
+                </div>
+                </form>))
+}
+{
+    questions.filter((question) => { return question.type == "open" }).map((question) => (
+        <div class="comment">
+            <p>{question.response}</p>
+        </div>))
+}
+<button type="submit" class="submit-btn">Submit</button>
+        </div >
     );
 }
 

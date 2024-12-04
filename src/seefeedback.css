@@ -19,11 +19,6 @@
     cursor: pointer;
 }
 
-.rating label:hover,
-.rating label:hover~label {
-    color: darkgoldenrod;
-}
-
-.rating input:checked~label {
+.checked {
     color: goldenrod;
 }
