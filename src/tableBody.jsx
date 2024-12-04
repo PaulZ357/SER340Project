@@ -1,19 +1,29 @@
 import React, { Component } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation,Link } from "react-router-dom";
 
 // Helper functional component to handle navigation
 const NavigateButton = ({ course, setIsLoggedIn }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { role, firstName, lastName, email } = location.state || {
+    role: "Unknown",
+    firstName: " ",
+    lastName: " ",
+    email: " ",
+  };
+  const courseID = course.courseID;
+  const courseName = course.courseName;
+  const professor = course.professor;
 
   const handleClick = () => {
     // Example logic for logging in (if needed)
     if (setIsLoggedIn) setIsLoggedIn(true);
 
     // Navigate to the "/home" route and pass course details via state
-    navigate("/home", { state: { course } });
+    navigate("/home", { state: { role, email, firstName, lastName, courseID, courseName, professor } });
   };
 
-  return <button onClick={handleClick}>{course.courseID}</button>;
+  return <button onClick={handleClick}>{courseID}</button>;
 };
 
 class TableBody extends Component {

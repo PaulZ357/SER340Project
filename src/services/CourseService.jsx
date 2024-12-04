@@ -2,7 +2,7 @@ const courses = [
     {
       id: 1,
       courseID: "MA 229",
-      courseName: "Applied Statistics",
+      courseName: "Linear Algebra",
       professor: "Prof. A"
     },
     {
