@@ -16,7 +16,7 @@ function Login({ setIsLoggedIn }) {
       return;
     }
     if (!email.endsWith("@quinnipiac.edu")) {
-      setError("Please use a valid school email (e.g., example@school.edu).");
+      setError("Please use a valid school email (e.g., example@quinnipiac.edu).");
       return;
     }
     setError("");
