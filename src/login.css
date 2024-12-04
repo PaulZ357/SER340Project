@@ -92,3 +92,10 @@ button:hover {
   margin-bottom: 10px;
   font-size: 14px;
 }
+
+.profile-separator {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #dcdcdc; /* Light gray color */
+  margin: 10px 0;
+}

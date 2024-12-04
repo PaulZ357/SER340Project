@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from './login.jsx'
 import Table from "./table.jsx"
 import Profile from "./profile.jsx";
+import Givefeedback from "./givefeedback.jsx"
 import './App.css';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <div className="container">
-     <Router>
+    <Router>
         <Routes>
           {/* Login Route */}
           <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
@@ -22,6 +23,8 @@ function App() {
           <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
 
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/givefeedback" element={<Givefeedback/>} />
 
           {/* Table Route */}
           <Route path="/table" element={<Table />} />

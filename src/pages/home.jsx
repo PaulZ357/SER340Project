@@ -6,8 +6,9 @@ function Home() {
     const location = useLocation();
     const { role, firstName, lastName } = location.state || {
         role: "Unknown",
-        firstName: "John",
-        lastName: "Doe",
+        firstName: " ",
+        lastName: " ",
+        role,
       };
   
     return (
@@ -24,17 +25,27 @@ function Home() {
                 <a className="btn btn-secondary">Add Assignment</a>
               </>
             ) : (
-              <a className="btn btn-secondary">Give Feedback</a>
+             <Link 
+             to="/givefeedback"
+             className="btn btn-secondary"
+             >
+                GiveFeedback
+             </Link>
+              
             )}
 
              {/* Profile Button */}
-          <Link
-            to="/profile"
-            state={{ firstName, lastName }}
-            className="btn btn-secondary"
-          >
+             <Link
+                 to="/profile"
+                 state={{
+                firstName,
+                lastName,
+                role,
+                }}
+                className="btn btn-secondary"
+                >
             Profile
-          </Link>
+            </Link>
   
             {/* Log Out Button - Last for both roles */}
            
