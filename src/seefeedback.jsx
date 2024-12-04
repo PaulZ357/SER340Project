@@ -15,22 +15,18 @@ function SeeFeedback() {
             {questions.filter((question) => { return question.type == "rating" }).map((question) => (
                 <div class="rating-form"><h2>{question.name}</h2>
                     <div class="rating">
+                        <p{if (question.response > 4) { return " class=\"checked\""}}>&#9733;</p>
+                        <p{if (question.response > 3) { return " class=\"checked\""}}>&#9733;</p>
                         <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
-                        <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
-                        <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
-                        <p{if (question.response > 2) { return " class=\"checked\""}}>&#9733;</p>
-                    <p class="checked">&#9733;</p>
-                </div>
-                </form>))
-}
-{
-    questions.filter((question) => { return question.type == "open" }).map((question) => (
-        <div class="comment">
-            <p>{question.response}</p>
-        </div>))
-}
-<button type="submit" class="submit-btn">Submit</button>
-        </div >
+                        <p{if (question.response > 1) { return " class=\"checked\""}}>&#9733;</p>
+                        <p class="checked">&#9733;</p>
+                    </div>
+                </div>))}
+            {questions.filter((question) => { return question.type == "open" }).map((question) => (
+                <div class="comment">
+                    <p>{question.response}</p>
+                </div>))}
+        </div>
     );
 }
 
