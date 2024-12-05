@@ -4,11 +4,11 @@ import "./givefeedback.css"
 
 function Feedback() {
     const questions = [
-        { name: "Rating 1", type: "rating", id: 1 },
-        { name: "Rating 2", type: "rating", id: 2 },
-        { name: "Rating 3", type: "rating", id: 3 },
-        { name: "Open Ended 1", type: "open", id: 4 },
-        { name: "Open Ended 2", type: "open", id: 5 },
+        { name: "How well did you understand the central concepts and ideas in this course?", type: "rating", id: 1 },
+        { name: "How well could you apply information/skills learned in this course?", type: "rating", id: 2 },
+        { name: "How much were your critical thinking and/or problem solving abilities enhanced during this course?", type: "rating", id: 3 },
+        { name: "What are major strengths and/or major areas of improvement for the professor?", type: "open", id: 4 },
+        { name: "What are major strengths and/or major areas of improvement for the course?", type: "open", id: 5 },
     ]
     return (
         <div class="feedback-form">
@@ -28,11 +28,11 @@ function Feedback() {
                     </div>
                 </form>))}
             {questions.filter((question) => { return question.type == "open" }).map((question) => (
-                <div class="comment">
+                <div class="open-ended">
                     <label for={question.name}>{question.name}:</label>
                     <textarea id={question.name} name={question.name}></textarea>
                 </div>))}
-            <button type="submit" class="submit-btn">Submit</button>
+            <button type="submit" class="submit">Submit</button>
         </div>
     );
 }
