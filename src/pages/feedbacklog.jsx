@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation,Link } from "react-router-dom";
 import "./home.css";
 
-function Home() {
+function FeedbackLog() {
     const location = useLocation();
     const { role, firstName, lastName, email, courseID, courseName, professor } = location.state || {
       role: "Unknown",
@@ -19,15 +19,14 @@ function Home() {
         <div className="left-sidebar">
           <nav>
             {/* Common Home Button */}
-            <Link
-              to="/home" className="btn btn-secondary" state={{ role, email, firstName, lastName, courseID, courseName, professor }}>Home</Link>
+            <a className="btn btn-secondary">Home</a>
   
             {/* Role-specific Buttons */}
             {role === "Professor" ? (
-              <>
-                <a className="btn btn-secondary">Feedback Log</a>
-                <a className="btn btn-secondary">Add Assignment</a>
-              </>
+              <div>
+                <Link to="/feedbackLog" className="btn btn-secondary">Feedback Log</Link>
+                <Link to="/addAssignment" className="btn btn-secondary">Add Assignment</Link>
+              </div>
             ) : (
               <Link to="/givefeedback" className="btn btn-secondary" state={{
                 firstName,
@@ -75,4 +74,4 @@ function Home() {
   }
   
   
-  export default Home;
+  export default FeedbackLog;

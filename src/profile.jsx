@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./profile.css";
 
 function Profile() {
@@ -36,6 +36,39 @@ function Profile() {
     const isPasswordValid = password && !passwordError && password === confirmPassword;
   
     return (
+      <div className="app-container">
+      
+      <div className="left-sidebar">
+        <nav>
+            {/* Profile Button */}
+            <Link
+              to="/profile"
+              state={{
+                firstName,
+                lastName,
+                role,
+              }}
+              className="btn btn-secondary"
+            >
+              Profile
+            </Link>
+  
+            {/* Course Selection Button */}
+            <Link to="/selectcourse" className="btn btn-secondary" 
+              state={{
+                firstName,
+                lastName,
+                role,
+              }}>
+            Course Selection
+            </Link>
+            
+          {/* Log Out Button */}
+          <Link to="/" className="btn btn-secondary">
+            Log Out
+          </Link>
+        </nav>
+      </div>
       <div className="profile-container">
         {/* Profile Header */}
         <div className="profile-header">
@@ -135,6 +168,7 @@ function Profile() {
         >
           Save
         </button>
+      </div>
       </div>
     );
   }

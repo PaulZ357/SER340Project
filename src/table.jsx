@@ -50,14 +50,6 @@ class Table extends Component {
         const courses = this.filtercoursesByName();
         return (
             <React.Fragment>
-                <input
-                    type="text"
-                    className="from-control"
-                    name="search"
-                    placeholder="Search by Name"
-                    value={this.state.query}
-                    onChange={this.handleSearch}
-                />
                 <table className="table">
                     <TableHead/>
                     <TableBody
