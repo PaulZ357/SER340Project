@@ -8,6 +8,7 @@ import Table from "./table.jsx"
 import Profile from "./profile.jsx";
 import Givefeedback from "./givefeedback.jsx"
 import './App.css';
+import SeeFeedback from "./seefeedback.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,6 +29,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/givefeedback" element={<Givefeedback/>} />
+
+          <Route path="/seefeedback" element={<SeeFeedback/>} />
 
           {/* Table Route */}
           <Route path="/table" element={<Table />} />

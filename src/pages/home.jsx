@@ -25,7 +25,8 @@ function Home() {
             {/* Role-specific Buttons */}
             {role === "Professor" ? (
               <>
-                <a className="btn btn-secondary">Feedback Log</a>
+                <Link to="/seefeedback" className="btn btn-secondary" 
+                state={{role,email,firstName, lastName, courseID, courseName, professor}}>Feedback Log</Link>
                 <a className="btn btn-secondary">Add Assignment</a>
               </>
             ) : (

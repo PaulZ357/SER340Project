@@ -40,18 +40,6 @@ function Profile() {
       
       <div className="left-sidebar">
         <nav>
-            {/* Profile Button */}
-            <Link
-              to="/profile"
-              state={{
-                firstName,
-                lastName,
-                role,
-              }}
-              className="btn btn-secondary"
-            >
-              Profile
-            </Link>
   
             {/* Course Selection Button */}
             <Link to="/selectcourse" className="btn btn-secondary" 
